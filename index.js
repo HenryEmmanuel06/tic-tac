@@ -6,10 +6,14 @@ const O_text = "O"
 const X_text = "X"
 let currentPlayer = X_text
 let spaces = Array(9).fill(null)
- 
+
 const startGame = () => {
     boxes.forEach(box => box.addEventListener("click", boxClicked))
 }
+
+
+
+
 
 
 function boxClicked(e) {
@@ -22,8 +26,8 @@ function boxClicked(e) {
             playerText.innerText = currentPlayer + " has won!"
             let winning_blocks = playerHasWon()
             winning_blocks.map( box => boxes[box].style.backgroundColor = winnerIndicator)
-            
-           
+            boxes.forEach(box => box.removeEventListener("click", boxClicked))
+          
           
             return
         }
@@ -58,12 +62,13 @@ function playerHasWon() {
 restartBtn.addEventListener('click', restart)
 function restart() {
     spaces.fill(null)
-
+    
     boxes.forEach(box => {
         box.innerText = ""
         box.style.backgroundColor = ""
+        
     })
-
+    boxes.forEach(box => box.addEventListener("click", boxClicked))
     playerText.innerText = 'TIC TAC TOE'
 
     currentPlayer = X_text

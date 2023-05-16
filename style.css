@@ -116,7 +116,7 @@ h1{
         border-bottom: none;
     }
     #restartBtn{
-        padding: 5px 10px;
+        padding: 10px 10px;
         background-color: var(--orange);
         color: #333;
         border: none;
